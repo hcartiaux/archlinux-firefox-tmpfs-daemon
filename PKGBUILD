@@ -11,7 +11,7 @@ depends=('firefox' 'rsync')
 conflicts=('firefox-sync')
 source=(  rc.firefox-tmpfs
           confd.firefox-tmpfs )
-md5sums=( 45dbc8d64b90ed2f3559ea5b91a01bcb
+md5sums=( d9730b3bd69afe1b2e30088900f3bb6e
           fa5d47bc7bfa10b58212aa66c39fd960 )
 
 backup=(etc/conf.d/firefox-tmpfs)
