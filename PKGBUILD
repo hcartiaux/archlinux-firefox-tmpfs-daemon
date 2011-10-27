@@ -2,7 +2,7 @@
 
 pkgname=firefox-tmpfs-daemon
 pkgver=0.4
-pkgrel=3
+pkgrel=5
 pkgdesc="Sync all ~/.mozilla directories to tmpfs at boot and stop time"
 arch=(any)
 url=https://bbs.archlinux.org/viewtopic.php?id=118576
