@@ -1,0 +1,23 @@
+pre_install() {
+  echo ">> Firefox-tmpfs now requires systemd. If you have not switched to systemd"
+  echo ">> use the version 0.4-5, compatible with initscripts, and still available"
+  echo ">> on github: https://github.com/hcartiaux/archlinux-firefox-tmpfs-daemon"
+  echo
+  echo ">> In order to use firefox-tmpfs, run the following command:"
+  echo ">> systemctl enable firefox-tmpfs"
+  echo ">> Change default configuration in /etc/config/firefox-tmpfs"
+}
+
+pre_upgrade() {
+  pre_install
+  echo
+  echo ">> firefox-tmpfs service stopped"
+  /etc/init.d/firefox-tmpfs stop
+}
+
+pre_remove() {
+  echo ">> firefox-tmpfs service stopped"
+  /etc/init.d/firefox-tmpfs stop
+}
+
+# vim:set ts=2 sw=2 et:

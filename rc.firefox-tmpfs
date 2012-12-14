@@ -2,13 +2,10 @@
 #
 #	/etc/rc.d/firefox-tmpfs
 #
-# Sync mozilla preferences to tmpfs 
+# Sync mozilla preferences to tmpfs
 #
 # An initial backup is always kept in ~/.mozilla_ref
 # In case of crash, firefox-tmpfs tries to recover your old profile at startup
-
-. /etc/rc.conf
-. /etc/rc.d/functions
 
 # source application-specific settings
 [ -f /etc/conf.d/firefox-tmpfs ] && . /etc/conf.d/firefox-tmpfs
@@ -25,12 +22,11 @@
 
 case "$1" in
   start)
-    stat_busy "Sync firefox profiles from hd to tmpfs"
 
     for user in $USERS ; do
 
       if [ -h /home/$user/.mozilla ] && [ -d /home/$user/.mozilla_ref ] ; then
-      
+
         # In case of crash, if old symlinks to $TMPFS still exists, use the old profile
 
         rm /home/$user/.mozilla
@@ -53,13 +49,8 @@ case "$1" in
 
     done
 
-    add_daemon firefox-tmpfs
-
-    stat_done
-
     ;;
   stop)
-    stat_busy "Sync firefox profiles from tmpfs to hd"
 
     for user in $USERS ; do
 
@@ -74,15 +65,12 @@ case "$1" in
 
     done
 
-    rm_daemon firefox-tmpfs
-    stat_done
     ;;
   restart)
     $0 stop
     $0 start
     ;;
   save)
-    stat_busy "Sync firefox profiles from tmpfs to hd"
 
     for user in $USERS ; do
 
@@ -92,7 +80,6 @@ case "$1" in
 
     done
 
-    stat_done
     ;;
   *)
     echo "usage: $0 {start|stop|restart|save}"
